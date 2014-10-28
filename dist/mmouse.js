@@ -1,5 +1,4 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.mmouse=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/*global _*/
 function clamp(val, min, max) {
   min = typeof min === 'number' ? min : -Infinity;
   max = typeof max === 'number' ? max : Infinity;
@@ -85,13 +84,13 @@ function trackMovement(options) {
   };
 }
 
-function trackMovementIn(el, options) {
-  return trackMovement(_.merge(options || {}, {
-    getMinX: function () { return 0; },
-    getMaxX: function () { return el.offsetWidth; },
-    getMinY: function () { return 0; },
-    getMaxY: function () { return el.offsetHeight; }
-  }));
+function trackMovementIn(el, opt) {
+  var options = opt || {};
+  options.getMinX = function () { return 0; };
+  options.getMaxX = function () { return el.offsetWidth; };
+  options.getMinY = function () { return 0; };
+  options.getMaxY = function () { return el.offsetHeight; };
+  return trackMovement(options);
 }
 
 exports.trackMovement = trackMovement;

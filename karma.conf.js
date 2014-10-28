@@ -4,10 +4,7 @@ module.exports = function(config) {
     frameworks: ['jasmine', 'referee', 'browserify'],
 
     // list of files / patterns to load in the browser as globals
-    files: [
-      'node_modules/bane/lib/bane.js',
-      'node_modules/lodash/dist/lodash.min.js'
-    ],
+    files: [],
 
     browserify: {
       debug: true,

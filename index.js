@@ -1,4 +1,3 @@
-/*global _*/
 function clamp(val, min, max) {
   min = typeof min === 'number' ? min : -Infinity;
   max = typeof max === 'number' ? max : Infinity;
@@ -84,13 +83,13 @@ function trackMovement(options) {
   };
 }
 
-function trackMovementIn(el, options) {
-  return trackMovement(_.merge(options || {}, {
-    getMinX: function () { return 0; },
-    getMaxX: function () { return el.offsetWidth; },
-    getMinY: function () { return 0; },
-    getMaxY: function () { return el.offsetHeight; }
-  }));
+function trackMovementIn(el, opt) {
+  var options = opt || {};
+  options.getMinX = function () { return 0; };
+  options.getMaxX = function () { return el.offsetWidth; };
+  options.getMinY = function () { return 0; };
+  options.getMaxY = function () { return el.offsetHeight; };
+  return trackMovement(options);
 }
 
 exports.trackMovement = trackMovement;

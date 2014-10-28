@@ -12,9 +12,6 @@
   },
   "author": "Christian Johansen (christian.johansen@nrk.no)",
   "license": "ISC",
-  "dependencies": {
-    "lodash": "^2.4.1"
-  },
   "devDependencies": {
     "browserify": "^5.11.1",
     "karma": "*",
