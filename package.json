@@ -1,0 +1,28 @@
+{
+  "name": "mmouse",
+  "version": "1.0.0",
+  "description": "Mouse move tracking library",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start karma.conf.js",
+    "bundle": "browserify -s mmouse -o mmouse.js index.js"
+  },
+  "author": "Christian Johansen (christian.johansen@nrk.no)",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "browserify": "^5.11.1",
+    "karma": "*",
+    "karma-browserifast": "^0.7.0",
+    "karma-chrome-launcher": "*",
+    "karma-firefox-launcher": "*",
+    "karma-jasmine": "*",
+    "karma-referee": "^0.4.0",
+    "karma-safari-launcher": "*"
+  }
+}
