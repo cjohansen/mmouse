@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
-    "bundle": "browserify -s mmouse -o mmouse.js index.js"
+    "bundle": "browserify -s mmouse -o dist/mmouse.js index.js"
   },
   "author": "Christian Johansen (christian.johansen@nrk.no)",
   "license": "ISC",
