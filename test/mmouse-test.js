@@ -76,6 +76,58 @@ describe('mmouse', function () {
     refute.called(onStop);
   });
 
+  it('start returns event when enabled', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove});
+    var event = tracker.start({pageX: 50, pageY: 50});
+    assert.isObject(event);
+  });
+
+  it('start does not return event when disabled', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove, enabled: false});
+    var event = tracker.start({pageX: 50, pageY: 50});
+    refute.isObject(event);
+  });
+
+  it('stop returns event when enabled', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove});
+    tracker.start({pageX: 50, pageY: 50});
+    var event = tracker.stop({pageX: 50, pageY: 50});
+    assert.isObject(event);
+  });
+
+  it('stop does not return event when disabled', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove, enabled: false});
+    tracker.start({pageX: 50, pageY: 50});
+    var event = tracker.stop({pageX: 50, pageY: 50});
+    refute.isObject(event);
+  });
+
+  it('stop does not return event when not started', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove});
+    var event = tracker.stop({pageX: 50, pageY: 50});
+    refute.isObject(event);
+  });
+
+  it('track returns event when enabled', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove});
+    tracker.start({pageX: 50, pageY: 50});
+    var event = tracker.track({pageX: 50, pageY: 50});
+    assert.isObject(event);
+  });
+
+  it('track does not return event when disabled', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove, enabled: false});
+    tracker.start({pageX: 50, pageY: 50});
+    var event = tracker.track({pageX: 50, pageY: 50});
+    refute.isObject(event);
+  });
+
+  it('track does not return event when not started', function () {
+    var tracker = mmouse.trackMovement({onMove: onMove});
+    var event = tracker.track({pageX: 50, pageY: 50});
+    refute.isObject(event);
+  });
+
   it('moves in two motions', function () {
     var tracker = mmouse.trackMovement(opt);
 
