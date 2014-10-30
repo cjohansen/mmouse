@@ -25,7 +25,9 @@ function trackMovement(options) {
     startY = e.pageY;
     prevX = startX;
     prevY = startY;
-    onStart({x: startX, y: startY});
+    var event = {x: startX, y: startY};
+    onStart(event);
+    return event;
   }
 
   function stop(e) {
@@ -36,7 +38,9 @@ function trackMovement(options) {
     startY = undefined;
     posX = clamp(posX, getMinX(), getMaxX());
     posY = clamp(posY, getMinY(), getMaxY());
-    onStop({x: endX, y: endY});
+    var event = {x: endX, y: endY};
+    onStop(event);
+    return event;
   }
 
   function track(e) {
@@ -46,7 +50,7 @@ function trackMovement(options) {
     prevX = e.pageX;
     prevY = e.pageY;
 
-    onMove({
+    var event = {
       startX: startX,
       startY: startY,
       endX: e.pageX,
@@ -55,7 +59,9 @@ function trackMovement(options) {
       dy: e.pageY - startY,
       posX: clamp(posX, getMinX(), getMaxX()),
       posY: clamp(posY, getMinY(), getMaxY())
-    });
+    };
+    onMove(event);
+    return event;
   }
 
   return {
