@@ -73,6 +73,18 @@ function trackMovement(options) {
       stop(target);
     },
 
+    moveTo: function (e) {
+      startX = prevX || 0;
+      startY = prevY || 0;
+      start({pageX: startX, pageY: startY});
+      var target = {
+        pageX: startX + (e.x || 0) - posX,
+        pageY: startY + (e.y || 0) - posY
+      };
+      track(target);
+      stop(target);
+    },
+
     disable: function () {
       enabled = false;
       startX = undefined;

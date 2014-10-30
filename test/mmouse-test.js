@@ -53,6 +53,28 @@ describe('mmouse', function () {
     assert.calledOnce(onStop);
   });
 
+  it('moves programatically to absolute position', function () {
+    var tracker = mmouse.trackMovement(opt);
+
+    tracker.moveTo({x: 2, y: 5});
+    tracker.moveTo({x: 10, y: 2});
+
+    assert.calledTwice(onStart);
+    assert.calledTwice(onMove);
+    assert.calledWith(onMove, {
+      startX: 2,
+      startY: 5,
+      endX: 10,
+      endY: 2,
+      posX: 10,
+      posY: 2,
+      dx: 8,
+      dy: -3
+    });
+
+    assert.calledTwice(onStop);
+  });
+
   it('does not trigger events when disabled', function () {
     var tracker = mmouse.trackMovement(opt);
     tracker.disable();
